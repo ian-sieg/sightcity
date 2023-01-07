@@ -1,8 +1,8 @@
 //yelp API key and url
-const yelpKey = "Bearer E2s8wVOO8KVdTS3aa2P8anoU-k4vGQUsV7ib19zUCgIiAgJ8pP8Hz4I2BBTmP_zycJAocBiY3LhzMusXhK_5TowMCDtq8fj4CWdeVelyfL7gYx4AJRzhOuR0YWzPYnYx";
+const yelpKey = "Bearer _eC9xpijsh8OTiWG3LpYqWgKZGH21enYV29YdUhv1FKGfCDx5vI7jDGtTA1yLWACCBjYi-0yxVRdgkSpbooLjjFdh_UD61YMqO3aBDEskgsIp2TUCE0mZAgvS6u5Y3Yx";
 const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
-const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
+const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com";
 
 let contentBlock = document.getElementById('content')
 const now = Date.now()
@@ -81,13 +81,14 @@ function findHotels(criteria) {
     }
     
     fetch (yelpQuery, {
-        headers: { Authorization: yelpKey }       
+        headers: {
+            Authorization: yelpKey
+        }
     })
         .then(function (res) {
             return res.json();
         })
         .then(function (data) {
-            console.log(data);
             genHotel(data)
         })
         .catch(function (err) {
